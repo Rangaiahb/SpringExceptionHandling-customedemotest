@@ -28,7 +28,8 @@ public class EmployeeController {
 	@RequestMapping(value="/emp/{id}", method=RequestMethod.GET)
 	public String getEmployee(@PathVariable("id") int id, Model model) throws Exception{
 		//deliberately throwing different types of exception
-		if(id==1 ||id==2++){
+		if(id==1){
+			
 			throw new EmployeeNotFoundException(id);
 		}else if(id==2){
 			throw new SQLException("SQLException, id="+id);
@@ -57,6 +58,11 @@ public class EmployeeController {
 	    
 	    modelAndView.setViewName("error");
 	    return modelAndView;
+	}
+
+	public boolean isValid() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 //	@ExceptionHandler(EmployeeNotFoundException.class)
